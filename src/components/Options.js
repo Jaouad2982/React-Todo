@@ -1,10 +1,13 @@
 import React from "react"
 import Option from "./Option"
-const Options = ()=>{
+const Options = (props)=>{
     return(
         <div>
                 <h4>Options goes here</h4>
-                <Option/>
+                {
+                    props.options.map(option=><Option key={option} optionText={option}/>)
+                }
+                
         </div>
 
 

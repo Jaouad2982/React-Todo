@@ -1,10 +1,11 @@
 import React from "react"
 
 
-const Header =()=>{
+const Header =(props)=>{
     return (
         <div>
-                    <h3>Todo List </h3>
+                    <h3>{props.title}</h3>
+                    <h5>{props.subtitle}</h5>
         </div>
     )
 }

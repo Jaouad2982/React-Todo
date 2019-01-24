@@ -9,11 +9,14 @@ class App extends React.Component {
         super(props)
     }
     render(){
+        const title = "Todo List";
+        const subtitle = "Put your life in the hands of a computer";
+        const options = ["thing one","thing two","thing three"]
         return (
             <div>
-                   <Header />
+                   <Header title={title}  subtitle={subtitle}/>
                    <Action />
-                   <Options/>
+                   <Options options={options}/>
                    <AddOptions />
             </div>
         )

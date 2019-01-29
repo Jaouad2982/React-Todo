@@ -6,17 +6,31 @@ import AddOptions from "./components/AddOptions";
 
 class App extends React.Component {
     constructor(props){
-        super(props)
+        super(props);
+        this.state={
+             options : ["thing one","thing two","thing three"]
+        }
+        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+    }
+
+    handleDeleteOptions = ()=>{
+        this.setState (()=>{
+            return {
+                options : []
+            }
+        })
     }
     render(){
         const title = "Todo List";
         const subtitle = "Put your life in the hands of a computer";
-        const options = ["thing one","thing two","thing three"]
+      
         return (
             <div>
                    <Header title={title}  subtitle={subtitle}/>
-                   <Action />
-                   <Options options={options}/>
+                   <Action hasOption={this.state.options.length > 0}/>
+                   <Options 
+                   options={this.state.options}
+                   handleDeleteOptions = {this.handleDeleteOptions}/>
                    <AddOptions />
             </div>
         )

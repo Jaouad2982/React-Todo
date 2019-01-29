@@ -11,12 +11,29 @@ class App extends React.Component {
              options : ["thing one","thing two","thing three"]
         }
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+        this.handleAddOptions = this.handleAddOptions.bind(this)
+    }
+
+    handlePickOption =()=>{
+        const randomOption = Math.floor(Math.random()*this.state.options.length);
+        const option = this.state.options[randomOption]
+        alert(option);
     }
 
     handleDeleteOptions = ()=>{
         this.setState (()=>{
             return {
                 options : []
+            }
+        })
+    }
+
+    handleAddOptions = (e)=>{
+        e.preventDefault();
+        const option = e.target.elements.option.value;
+        this.setState((prevState)=>{
+            return {
+                options : prevState.options.concat(option)
             }
         })
     }
@@ -27,11 +44,16 @@ class App extends React.Component {
         return (
             <div>
                    <Header title={title}  subtitle={subtitle}/>
-                   <Action hasOption={this.state.options.length > 0}/>
+                   <Action 
+                   hasOption={this.state.options.length > 0}
+                   handlePickOption = {this.handlePickOption}
+                   />
                    <Options 
                    options={this.state.options}
                    handleDeleteOptions = {this.handleDeleteOptions}/>
-                   <AddOptions />
+                   <AddOptions 
+                   handleAddOptions={this.handleAddOptions}
+                   />
             </div>
         )
     }

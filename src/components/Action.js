@@ -2,13 +2,11 @@ import React from "react"
 
 
 const Action =(props)=>{
-     const handlePick = ()=>{
-        alert("hello");
-    }
     return (
         <div>
         <button 
-        onClick={handlePick}
+
+        onClick={props.handlePickOption}
         disabled={!props.hasOption}
         >What Should I do</button>
         </div>

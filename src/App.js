@@ -8,10 +8,11 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state={
-             options : ["thing one","thing two","thing three"]
+             options : props.options
         }
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handleAddOptions = this.handleAddOptions.bind(this)
+        this.handleAddOptions = this.handleAddOptions.bind(this);
+        this.handleDeleteOption = this.handleDeleteOption.bind(this);
     }
 
     handlePickOption =()=>{
@@ -28,29 +29,43 @@ class App extends React.Component {
         })
     }
 
+    handleDeleteOption(optionToRemove){
+        this.setState((prevState)=>{
+                return {
+                    options : prevState.options.filter(option=>{
+                        return optionToRemove !== option
+                    })
+                }
+        })
+    }
+
     handleAddOptions = (e)=>{
         e.preventDefault();
-        const option = e.target.elements.option.value;
+        const option = e.target.elements.option.value.trim();
         this.setState((prevState)=>{
             return {
-                options : prevState.options.concat(option)
+                options : prevState.options.concat(option),
             }
         })
     }
+
+    
     render(){
-        const title = "Todo List";
         const subtitle = "Put your life in the hands of a computer";
       
         return (
             <div>
-                   <Header title={title}  subtitle={subtitle}/>
+                   <Header subtitle={subtitle}/>
                    <Action 
                    hasOption={this.state.options.length > 0}
                    handlePickOption = {this.handlePickOption}
                    />
                    <Options 
                    options={this.state.options}
-                   handleDeleteOptions = {this.handleDeleteOptions}/>
+                   handleDeleteOptions = {this.handleDeleteOptions}
+                   handleDeleteOption = {this.handleDeleteOption}
+                   />
+                        
                    <AddOptions 
                    handleAddOptions={this.handleAddOptions}
                    />
@@ -58,5 +73,10 @@ class App extends React.Component {
         )
     }
 }
+
+App.defaultProps = {
+    options : []
+}
+
 
 export default App

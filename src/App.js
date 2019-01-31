@@ -8,13 +8,35 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state={
-             options : props.options
+             options : props.options,
+             message : " "
         }
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
         this.handleAddOptions = this.handleAddOptions.bind(this);
         this.handleDeleteOption = this.handleDeleteOption.bind(this);
     }
 
+    
+    componentDidMount(){
+        const json = localStorage.getItem("options");
+        const options = JSON.parse(json);
+        this.setState((prevState)=>{
+            return {
+                options : options
+            }
+        })
+    }
+
+    componentDidUpdate(prevProps,prevState){
+        if(prevState.options.length !== this.state.options){
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem("options",json);
+        }
+    }
+
+    componentWillUnmount(){
+        console.log("component will unmount")
+    }
     handlePickOption =()=>{
         const randomOption = Math.floor(Math.random()*this.state.options.length);
         const option = this.state.options[randomOption]
@@ -51,11 +73,9 @@ class App extends React.Component {
 
     
     render(){
-        const subtitle = "Put your life in the hands of a computer";
-      
         return (
             <div>
-                   <Header subtitle={subtitle}/>
+                   <Header/>
                    <Action 
                    hasOption={this.state.options.length > 0}
                    handlePickOption = {this.handlePickOption}
@@ -65,7 +85,7 @@ class App extends React.Component {
                    handleDeleteOptions = {this.handleDeleteOptions}
                    handleDeleteOption = {this.handleDeleteOption}
                    />
-                        
+                {this.state.message}
                    <AddOptions 
                    handleAddOptions={this.handleAddOptions}
                    />

@@ -82,7 +82,7 @@ class App extends React.Component {
                    handleDeleteOption = {this.handleDeleteOption}
                    />
 
-                   <AddOptions 
+                   <AddOptions
                    handleAddOptions={this.handleAddOptions}
                    />
                   <h3 style={{color:"white"}}> {this.state.check} </h3>

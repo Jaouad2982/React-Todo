@@ -3,6 +3,14 @@ import Header from "./components/Header";
 import Action from "./components/Action";
 import Options from "./components/Options";
 import AddOptions from "./components/AddOptions";
+import "./style.css"
+
+const style = {
+    border:"1px solid black",
+   maxWidth : "600px",
+   margin : "0 auto",
+   display:"block"
+}
 
 class App extends React.Component {
 
@@ -33,9 +41,6 @@ class App extends React.Component {
     handleAddOptions = (e)=>{
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
-        if(option === option){
-
-        }
         this.setState((prevState)=>{
             return {
                 options : prevState.options.concat(option),
@@ -51,11 +56,13 @@ class App extends React.Component {
         })
     }
 
+  
     render(){
+       
         const title = "Todo List";
-
         return (
-            <div>
+            <div style={style}>
+            
                    <Header title={title} />
                    <Action 
                    hasOption={this.state.options.length > 0}
@@ -70,6 +77,8 @@ class App extends React.Component {
                    <AddOptions 
                    handleAddOptions={this.handleAddOptions}
                    />
+                   {this.state.check}
+                
             </div>
         )
 

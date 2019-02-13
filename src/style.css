@@ -1,0 +1,10 @@
+body {
+    background-color:#8e60ea;
+}
+
+app{
+    max-width: 400px;
+    margin : 0 auto;
+    display: block;
+    border: 1px black solid;
+}

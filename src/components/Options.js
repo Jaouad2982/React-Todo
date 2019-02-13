@@ -2,9 +2,16 @@ import React from "react"
 import Option from "./Option"
 const Options = (props)=>{
 
+    const style = {
+        borderRadius : "20%",
+        width : "50%",
+        marginTop:"10%"
+    }
+
+
     return(
         <div>
-                <button onClick={props.handleDeleteOptions}>remove All </button>
+                <button style={style} onClick={props.handleDeleteOptions}>remove All </button>
              
                 {
                     props.options.map(option=><Option

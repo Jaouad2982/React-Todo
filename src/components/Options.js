@@ -4,7 +4,7 @@ const Options = (props)=>{
 
     const style = {
         borderRadius : "20%",
-        width : "50%",
+        width : "100%",
         marginTop:"10%"
     }
 

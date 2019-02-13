@@ -6,7 +6,6 @@ import AddOptions from "./components/AddOptions";
 import "./style.css"
 
 const style = {
-    border:"1px solid black",
    maxWidth : "600px",
    margin : "0 auto",
    display:"block"
@@ -41,12 +40,21 @@ class App extends React.Component {
     handleAddOptions = (e)=>{
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
+        if(this.state.options.indexOf(option) > -1){
+            this.setState({
+                check : "One or more of Your Todos already exists, please Check and remove",
+                
+            })
+        }
         this.setState((prevState)=>{
             return {
-                options : prevState.options.concat(option),
+                options : prevState.options.concat(option)        
             }
         })
+    
+     
     }
+
 
     handleDeleteOptions = ()=>{
         this.setState(()=>{
@@ -77,7 +85,7 @@ class App extends React.Component {
                    <AddOptions 
                    handleAddOptions={this.handleAddOptions}
                    />
-                   {this.state.check}
+                  <h3 style={{color:"white"}}> {this.state.check} </h3>
                 
             </div>
         )

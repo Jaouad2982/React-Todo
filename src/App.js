@@ -27,6 +27,17 @@ class App extends React.Component {
     }
 
 
+        componentDidMount (){
+        console.log("mount")
+    }
+            componentWillUpdate(){
+        console.log("will unmount")
+    }
+    componentWillUpdate(prevProps,prevState){
+        console.log("will mount")
+    }
+
+   
     handleDeleteOption(optionToRemove){
         this.setState((prevState)=>{
                 return {

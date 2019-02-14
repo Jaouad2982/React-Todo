@@ -67,10 +67,11 @@ class App extends React.Component {
         }
         this.setState((prevState)=>{
             return {
-                options : prevState.options.concat(option)        
+                options : prevState.options.concat(option),
             }
         })
-    
+        e.target.elements.option.value = ""
+
      
     }
 

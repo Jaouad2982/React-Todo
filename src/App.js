@@ -17,7 +17,8 @@ class App extends React.Component {
         super(props);
         this.state={
              options : [],
-             check: ""
+             check: "",
+             emptyString : ""
          
         }
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
@@ -106,7 +107,7 @@ class App extends React.Component {
                    handleAddOptions={this.handleAddOptions}
                    />
                   <h3 style={{color:"white"}}> {this.state.check} </h3>
-
+                  
                 
             </div>
         )

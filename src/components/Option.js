@@ -8,6 +8,7 @@ const Option = (props)=>{
         marginTop:"6%"
     }
     const styleBtn ={
+        fontFamily: "'Permanent Marker', cursive",
         width:"20%",
         color:"#2d2244",
         borderRadius:"19%",

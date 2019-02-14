@@ -8,6 +8,8 @@ const AddOptions =(props)=>{
         }
 
         const styleBtn ={
+            fontFamily: "'Permanent Marker', cursive",
+            fontSize :"1.3rem",
             width:"100%",
             color:"black",
             marginTop:"5%",

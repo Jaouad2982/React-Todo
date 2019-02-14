@@ -3,6 +3,8 @@ import React from "react"
 
 const Header =(props)=>{
     const style = {
+        fontFamily: "'Permanent Marker', cursive",
+        fontSize:"1.3rem",
         color : "white",
         textAlign:"center",
         fontSize:"1.6rem"

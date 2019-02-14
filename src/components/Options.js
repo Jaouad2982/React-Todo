@@ -4,6 +4,8 @@ import Radium from "radium"
 const Options = (props)=>{
 
     const style = {
+        fontFamily: "'Permanent Marker', cursive",
+        fontSize:"1.2rem",
         borderRadius : "20%",
         width : "100%",
         marginTop:"10%",

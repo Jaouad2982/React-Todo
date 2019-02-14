@@ -22,7 +22,7 @@ const AddOptions =(props)=>{
             <div >
                     <form onSubmit={props.handleAddOptions}>
                         <input style={style} type="text" name="option" placeholder="Enter Todo"/>
-                        <button style={styleBtn} >Add option</button>
+                        <button style={styleBtn} >Add Todo</button>
                     </form>
             </div>
         )

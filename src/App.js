@@ -7,7 +7,7 @@ import { parse } from "path";
 import "./style.css"
 
 const style = {
-   maxWidth : "600px",
+   maxWidth : "400px",
    margin : "0 auto",
    display:"block"
 }

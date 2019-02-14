@@ -3,14 +3,12 @@ import Header from "./components/Header";
 import Action from "./components/Action";
 import Options from "./components/Options";
 import AddOptions from "./components/AddOptions";
-import { parse } from "path";
 import "./style.css"
 
 const style = {
    maxWidth : "400px",
    margin : "0 auto",
    display:"block",
-   overflowX : "hidden"
 }
 
 class App extends React.Component {

@@ -3,60 +3,55 @@ import Header from "./components/Header";
 import Action from "./components/Action";
 import Options from "./components/Options";
 import AddOptions from "./components/AddOptions";
+import "./style.css"
+
+const style = {
+   maxWidth : "400px",
+   margin : "0 auto",
+   display:"block",
+}
 
 class App extends React.Component {
+
     constructor(props){
         super(props);
         this.state={
-             options : props.options,
-             message : " "
+             options : [],
+             check: ""
+         
         }
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+        this.handleAddOptions = this.handleAddOptions.bind(this);
         this.handleAddOptions = this.handleAddOptions.bind(this);
         this.handleDeleteOption = this.handleDeleteOption.bind(this);
     }
 
-    
-    componentDidMount(){
+
+        componentDidMount (){
         const json = localStorage.getItem("options");
         const options = JSON.parse(json);
-        this.setState((prevState)=>{
-            return {
-                options : options
-            }
+        if(options){
+        this.setState({
+            options : options
         })
     }
 
-    componentDidUpdate(prevProps,prevState){
-        if(prevState.options.length !== this.state.options){
+    }
+        componentWillUpdate(prevProps,prevState){
+        if(prevState.options.length !== this.state.options.length ){
             const json = JSON.stringify(this.state.options);
             localStorage.setItem("options",json);
         }
     }
-
-    componentWillUnmount(){
-        console.log("component will unmount")
-    }
-    handlePickOption =()=>{
-        const randomOption = Math.floor(Math.random()*this.state.options.length);
-        const option = this.state.options[randomOption]
-        alert(option);
-    }
-
-    handleDeleteOptions = ()=>{
-        this.setState (()=>{
-            return {
-                options : []
-            }
-        })
-    }
-
+      
+   
     handleDeleteOption(optionToRemove){
         this.setState((prevState)=>{
                 return {
                     options : prevState.options.filter(option=>{
                         return optionToRemove !== option
                     })
+                    
                 }
         })
     }
@@ -64,21 +59,39 @@ class App extends React.Component {
     handleAddOptions = (e)=>{
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
+        if(this.state.options.indexOf(option) > -1){
+            this.setState({
+                check : "One or more of Your Todos already exists, please Check and remove",
+                
+            })
+        }
         this.setState((prevState)=>{
             return {
                 options : prevState.options.concat(option),
             }
-        })      
+        })
+        e.target.elements.option.value = ""
 
-        e.target.elements.option.value = " ";
-
+     
     }
 
-    
+
+    handleDeleteOptions = ()=>{
+        this.setState(()=>{
+            return {
+                options : []
+            }
+        })
+    }
+
+  
     render(){
+       
+        const title = "Todo List";
         return (
-            <div>
-                   <Header/>
+            <div style={style}>
+            
+                   <Header title={title} />
                    <Action 
                    hasOption={this.state.options.length > 0}
                    handlePickOption = {this.handlePickOption}
@@ -88,18 +101,18 @@ class App extends React.Component {
                    handleDeleteOptions = {this.handleDeleteOptions}
                    handleDeleteOption = {this.handleDeleteOption}
                    />
-                {this.state.message}
-                   <AddOptions 
+
+                   <AddOptions
                    handleAddOptions={this.handleAddOptions}
                    />
+                  <h3 style={{color:"white"}}> {this.state.check} </h3>
+
+                
             </div>
         )
-    }
+
 }
 
-App.defaultProps = {
-    options : []
 }
 
-
-export default App
+export default App ;

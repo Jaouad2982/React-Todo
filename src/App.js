@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Action from "./components/Action";
 import Options from "./components/Options";
 import AddOptions from "./components/AddOptions";
+import { parse } from "path";
 import "./style.css"
 
 const style = {
@@ -28,15 +29,22 @@ class App extends React.Component {
 
 
         componentDidMount (){
-        console.log("mount")
-    }
-            componentWillUpdate(){
-        console.log("will unmount")
-    }
-    componentWillUpdate(prevProps,prevState){
-        console.log("will mount")
+        const json = localStorage.getItem("options");
+        const options = JSON.parse(json);
+        if(options){
+        this.setState({
+            options : options
+        })
     }
 
+    }
+        componentWillUpdate(prevProps,prevState){
+        if(prevState.options.length !== this.state.options.length){
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem("options",json);
+        }
+    }
+      
    
     handleDeleteOption(optionToRemove){
         this.setState((prevState)=>{

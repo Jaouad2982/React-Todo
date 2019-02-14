@@ -9,7 +9,8 @@ import "./style.css"
 const style = {
    maxWidth : "400px",
    margin : "0 auto",
-   display:"block"
+   display:"block",
+   overflowX : "hidden"
 }
 
 class App extends React.Component {

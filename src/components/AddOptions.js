@@ -3,7 +3,7 @@ import Radium from "radium"
 const AddOptions =(props)=>{
         const style = {
             borderRadius : "20%",
-            width : "50%",
+            width : "40%",
             marginTop:"10%",
         }
 

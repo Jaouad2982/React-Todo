@@ -9,6 +9,8 @@ const style = {
    maxWidth : "400px",
    margin : "0 auto",
    display:"block",
+   backgroundColor:"#545102",
+   height:"auto"
 }
 
 class App extends React.Component {

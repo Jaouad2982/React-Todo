@@ -18,13 +18,12 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state={
-             options : [],
+             options : ["Finish my project","React is React","Make sure you finish","Do not get lost"],
              check: "",
              emptyString : ""
          
         }
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handleAddOptions = this.handleAddOptions.bind(this);
         this.handleAddOptions = this.handleAddOptions.bind(this);
         this.handleDeleteOption = this.handleDeleteOption.bind(this);
     }
@@ -62,9 +61,9 @@ class App extends React.Component {
     handleAddOptions = (e)=>{
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
-        if(this.state.options.indexOf(option) > -1){
+        if(this.state.options.indexOf(option) > -1 || !option){
             this.setState({
-                check : "One or more of Your Todos already exists, please Check and remove",
+                check : "You Todo already exisits, Or you Entered an empty String,please Correct",
                 
             })
         }

@@ -24,6 +24,7 @@ const Option = (props)=>{
            {props.optionText}
            <button style={styleBtn}
                 onClick = {(e)=>{
+                    {props.optionText}
                props.handleDeleteOption(props.optionText)
            }}> remove </button>
         </div>

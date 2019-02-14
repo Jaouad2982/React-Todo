@@ -1,5 +1,5 @@
 import React from "react"
-
+import Radium from "radium"
 const AddOptions =(props)=>{
         const style = {
             borderRadius : "20%",
@@ -8,12 +8,15 @@ const AddOptions =(props)=>{
         }
 
         const styleBtn ={
-            borderRadius:"5%",
             width:"100%",
             color:"black",
             marginTop:"5%",
             display:"block",
-            borderRadius:"10%"
+            borderRadius:"10%",
+            ":hover":{
+                backgroundColor : "#ce9de8",
+                boxShadow : "5px 3px  #e8deed"
+            }
         }
         return(
             <div >
@@ -25,4 +28,4 @@ const AddOptions =(props)=>{
         )
 }
 
-export default AddOptions
+export default Radium(AddOptions)

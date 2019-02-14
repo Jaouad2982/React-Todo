@@ -39,7 +39,7 @@ class App extends React.Component {
 
     }
         componentWillUpdate(prevProps,prevState){
-        if(prevState.options.length !== this.state.options.length){
+        if(prevState.options.length !== this.state.options.length ){
             const json = JSON.stringify(this.state.options);
             localStorage.setItem("options",json);
         }
@@ -52,6 +52,7 @@ class App extends React.Component {
                     options : prevState.options.filter(option=>{
                         return optionToRemove !== option
                     })
+                    
                 }
         })
     }
@@ -106,6 +107,7 @@ class App extends React.Component {
                    handleAddOptions={this.handleAddOptions}
                    />
                   <h3 style={{color:"white"}}> {this.state.check} </h3>
+
                 
             </div>
         )

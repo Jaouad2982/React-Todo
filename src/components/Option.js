@@ -1,5 +1,5 @@
 import React from "react"
-
+import Radium from "radium"
 const Option = (props)=>{
     const style = {
         display:"flex",
@@ -10,7 +10,12 @@ const Option = (props)=>{
     const styleBtn ={
         width:"20%",
         color:"#2d2244",
-        borderRadius:"19%"
+        borderRadius:"19%",
+        ":hover":{
+            backgroundColor : "#ce9de8",
+            boxShadow : "5px 3px  #e8deed",
+            width:"21%"
+        }
     }
 
     return (
@@ -26,4 +31,4 @@ const Option = (props)=>{
 
 
 
-export default Option 
+export default Radium(Option) 
